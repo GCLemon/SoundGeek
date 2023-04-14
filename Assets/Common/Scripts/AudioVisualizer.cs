@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// 音声情報を可視化するオブジェクト
 public class AudioVisualizer : MonoBehaviour
 {
+    // 音声を再生するオブジェクト
     [SerializeField]
     private BGMPlayer _BGMPlayer;
 
+    // サンプル数
     [SerializeField]
     private int _SpectrumNum;
 
+    // 表示するスペクトルバー
     [SerializeField]
     private SpectrumBar _BarPrefab;
     private SpectrumBar[] _SpectrumBars;
 
+    // 初期化時処理
     void Start()
     {
+        // スペクトルバーを配置する
         _SpectrumBars = new SpectrumBar[_SpectrumNum];
         for(int i = 0; i < _SpectrumNum; ++i)
         {
@@ -26,12 +30,14 @@ public class AudioVisualizer : MonoBehaviour
         }
     }
 
+    // 更新時処理
     void Update()
     {
+        // 周波数解析を行い、バーの高さを設定
         float[] spectrum = _BGMPlayer.GetSpectrum(_SpectrumNum, 0);
         for (int i = 0; i < _SpectrumNum; ++i)
         {
-            _SpectrumBars[i].BarHeight = spectrum[i] * 500.0f;
+            _SpectrumBars[i].BarHeight = spectrum[i] * 500.0f + 1;
         }
     }
 }

@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BGMPlayer: {fileID: 1735131961}
   _SpectrumNum: 48
-  _BarPrefab: {fileID: 3664781065057301594, guid: aa42150dc3fcc4d2d9f0acfdab44d784, type: 3}
+  _BarPrefab: {fileID: 3945775615715059295, guid: aa42150dc3fcc4d2d9f0acfdab44d784, type: 3}
 --- !u!1 &1735131959
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f70736fe03c74b69a5c2ec01c7418b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _SoundEffects: []
 --- !u!82 &1865738765
 AudioSource:
   m_ObjectHideFlags: 0

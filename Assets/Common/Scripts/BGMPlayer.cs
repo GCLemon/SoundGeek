@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// 音声を再生するオブジェクト
 [RequireComponent(typeof(AudioSource))]
 public class BGMPlayer : MonoBehaviour
 {
@@ -29,11 +30,11 @@ public class BGMPlayer : MonoBehaviour
         if(!_CalculatedRatio.TryGetValue(length, out float ratio))
         {
             ratio = 2.0f;
-            while(Mathf.Abs(Mathf.Pow(ratio, length) - 8192 * ratio + 8191) >= 1.0e-2)
+            for(int i = 0; i < 1_000_000; ++i)
             {
-                float numer = (length - 1) * ratio - 8191 * Mathf.Pow(ratio, 1 - length);
-                float denom = length - 8192 * Mathf.Pow(ratio, 1 - length);
-                ratio = numer / denom;
+                float numer = 8191 * length - 8192 * (length - 1) * ratio;
+                float denom = length * (length * Mathf.Pow(ratio, length - 1) - 8192);
+                ratio -= ratio / length + numer / denom;
             }
             _CalculatedRatio[length] = ratio;
         }
