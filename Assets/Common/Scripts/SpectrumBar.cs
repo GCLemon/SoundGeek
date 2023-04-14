@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,16 +7,13 @@ using UnityEngine;
 public class SpectrumBar : MonoBehaviour
 {
     // 子オブジェクトのメッシュ情報
-    private Mesh _EdgeMesh;
-    private Mesh _FaceMesh;
+    private List<Mesh> _MeshList;
 
     // 子オブジェクトの頂点情報
-    private Vector3[] _EdgeVertices;
-    private Vector3[] _FaceVertices;
+    private List<Vector3[]> _VerticesList;
 
     // スペクトルバーの子オブジェクト
-    public GameObject Edge;
-    public GameObject Face;
+    public List<GameObject> ObjectList = new();
 
     // バーの高さ
     public float BarHeight;
@@ -23,21 +21,24 @@ public class SpectrumBar : MonoBehaviour
     // 初期化時処理
     void Start()
     {
-        // メッシュを取得
-        _EdgeMesh = Edge.GetComponent<MeshFilter>().sharedMesh;
-        _FaceMesh = Face.GetComponent<MeshFilter>().sharedMesh;
+        // メッシュ情報・頂点情報を取得
+        _MeshList = ObjectList.Select(value => value.GetComponent<MeshFilter>().sharedMesh).ToList();
 
         // 頂点情報を取得
-        _EdgeVertices = _EdgeMesh.vertices;
-        _FaceVertices = _FaceMesh.vertices;
+        _VerticesList = _MeshList.Select(value => value.vertices).ToList();
     }
 
     // 更新時処理
     void Update()
     {
         // 頂点情報を更新
-        Vector3 filter(Vector3 value) => value.y >= 0.5 ? value + new Vector3(0, BarHeight - 1, 0) : value;
-        _EdgeMesh.vertices = _EdgeVertices.Select(filter).ToArray();
-        _FaceMesh.vertices = _FaceVertices.Select(filter).ToArray();
+        for(int i = 0; i < _MeshList.Count; ++i)
+        {
+            _MeshList[i].vertices = _VerticesList[i].Select(value =>
+            {
+                Vector3 stretch = new(0, BarHeight - 1, 0);
+                if (value.y >= 0.5) { return value + stretch; } else { return value; }
+            }).ToArray();
+        }
     }
 }
