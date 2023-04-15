@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BGMPlayer: {fileID: 1735131961}
   _SpectrumNum: 24
-  _BarPrefab: {fileID: 3945775615715059295, guid: aa42150dc3fcc4d2d9f0acfdab44d784, type: 3}
+  _BarPrefab: {fileID: 3945775615715059295, guid: 8a8d5caf4f03c441987294e4e174fcf3, type: 3}
   SpectrumBars: []
 --- !u!1 &1735131959
 GameObject:

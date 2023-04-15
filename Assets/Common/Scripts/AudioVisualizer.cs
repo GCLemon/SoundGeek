@@ -18,24 +18,25 @@ public class AudioVisualizer : MonoBehaviour
 
     // 表示されているスペクトルバー
     [HideInInspector]
-    public SpectrumBar[] SpectrumBars;
+    private SpectrumBar[] _SpectrumBars;
 
     // 初期化時処理
     void Start()
     {
         // スペクトルバーを配置する
-        SpectrumBars = new SpectrumBar[_SpectrumNum * 2];
-        for(int i = 0; i < SpectrumBars.Length; ++i)
+        _SpectrumBars = new SpectrumBar[_SpectrumNum * 2];
+        for(int i = 0; i < _SpectrumBars.Length; ++i)
         {
             float angle = Mathf.PI * (i + 0.5f) / _SpectrumNum;
+            float radius = 1 / (2 * Mathf.Sin(0.2f * Mathf.PI / _SpectrumNum));
             Vector3 eulerAngles = new Vector3(0, angle * Mathf.Rad2Deg, 0);
-            Vector3 position = 12 * new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
+            Vector3 position = radius * new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
 
             SpectrumBar bar = Instantiate(_BarPrefab);
             bar.transform.parent = transform;
             bar.transform.localPosition = position;
             bar.transform.localEulerAngles = eulerAngles;
-            SpectrumBars[i] = bar;
+            _SpectrumBars[i] = bar;
         }
     }
 
@@ -46,9 +47,9 @@ public class AudioVisualizer : MonoBehaviour
         float[] left = _BGMPlayer.GetSpectrum(_SpectrumNum, 0);
         float[] right = _BGMPlayer.GetSpectrum(_SpectrumNum, 1);
         float[] spectrum = left.Concat(right.Reverse()).ToArray();
-        for (int i = 0; i < SpectrumBars.Length; ++i)
+        for (int i = 0; i < _SpectrumBars.Length; ++i)
         {
-            SpectrumBars[i].BarHeight = spectrum[i] * 500.0f + 1;
+            _SpectrumBars[i].BarHeight = spectrum[i] * 500.0f + 1;
         }
     }
 }
