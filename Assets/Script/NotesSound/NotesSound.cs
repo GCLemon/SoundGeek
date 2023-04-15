@@ -12,7 +12,8 @@ public class NotesSound : MonoBehaviour
 
     //ノーツとなるゲームオブジェクト
     [SerializeField]
-    private gameObject Obj;
+    private Collider Obj;
+
     
     void Start()
     {
