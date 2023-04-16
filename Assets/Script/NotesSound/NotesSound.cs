@@ -29,7 +29,7 @@ public class NotesSound : MonoBehaviour
     private void OnTriggerEnter(Collider Notes)
     {
         //Playerという名前のタグがついたゲームオブジェクトに重なった場合
-        if(Notes.gameObject.tag == "Player")
+        if(Notes.gameObject.tag == "Notes")
         {
             //音を鳴らす
             audio.PlayOneShot(sound);
