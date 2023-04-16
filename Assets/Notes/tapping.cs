@@ -10,7 +10,7 @@ public class tapping : MonoBehaviour
 		// 衝突した相手にPlayerタグが付いているとき
 		if (collision.gameObject.tag == "Player")
 		{
-			// 0.2秒後に消える
+			//消える
 			Destroy(gameObject, 0f);
 		}
 	}
