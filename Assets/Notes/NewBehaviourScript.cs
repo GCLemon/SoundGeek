@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-   void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Hit"); // ログを表示する
-    }
-    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+   void OnCollisionEnter(Collision collision)
+	{
+
+
+		// 衝突した相手にRespawnタグが付いているとき
+		if (collision.gameObject.tag == "Respawn"){
+
+			//消える
+			Destroy(gameObject, 0f);
+		}
+
     }
 }
