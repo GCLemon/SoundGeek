@@ -1,4 +1,6 @@
 {
+    "m_Name": "Settings",
+    "m_Path": "ProjectSettings/Packages/com.unity.probuilder/Settings.json",
     "m_Dictionary": {
         "m_DictionaryValues": [
             {
@@ -219,7 +221,7 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize",
-                "value": "{\"m_Value\":{\"x\":-0.3721533417701721,\"y\":0.3718477785587311,\"z\":0.3537553548812866}}"
+                "value": "{\"m_Value\":{\"x\":2.0452213287353517,\"y\":2.2889957427978517,\"z\":-1.5765504837036133}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",

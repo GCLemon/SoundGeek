@@ -31,7 +31,7 @@
         "com.unity.ide.vscode": "1.2.5",
         "com.unity.editorcoroutines": "1.0.0",
         "com.unity.performance.profile-analyzer": "1.2.2",
-        "com.unity.test-framework": "1.1.33",
+        "com.unity.test-framework": "1.1.31",
         "com.unity.testtools.codecoverage": "1.2.2"
       }
     },
@@ -97,14 +97,14 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.settings-manager": {
-      "version": "2.0.1",
+      "version": "1.0.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.33",
+      "version": "1.1.31",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -163,6 +163,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "org.effekseer.effekseerforunity": {
+      "version": "https://github.com/effekseer/EffekseerForUnity_Release.git?path=Assets/Effekseer",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ba2a1b6af0b5727321d63885b51b204e7f829f67"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
@@ -295,6 +302,17 @@
     "com.unity.modules.uielements": {
       "version": "1.0.0",
       "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.uielementsnative": "1.0.0"
+      }
+    },
+    "com.unity.modules.uielementsnative": {
+      "version": "1.0.0",
+      "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
