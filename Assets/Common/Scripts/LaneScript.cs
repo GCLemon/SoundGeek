@@ -15,7 +15,7 @@ public class LaneScript : MonoBehaviour
 
 
     //レーンのオブジェクト、コライダー
-    private GameObject Lane;
+    private GameObject Cylinder;
     private CapsuleCollider col;
 
     //当たり判定のオブジェクト
@@ -29,14 +29,13 @@ public class LaneScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Lane.transform.position = LanePosition;
-        Lane.transform.localScale = LaneScale;
 
         Player = GameObject.Find("Player");
+        Cylinder = GameObject.Find("Cylinder");
         //コンポーネント取得
         col = GetComponent<CapsuleCollider>();
         //当たり判定を表すゲームオブジェクト”judge”を取得
-        judge = GameObject.Find("judge");
+        judge = transform.GetChild(0).gameObject;
         judge.SetActive(false);
         
     }
@@ -44,16 +43,15 @@ public class LaneScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OnTriggerEnter(Player.GetComponent<Collider>());
-
-        OnTriggerExit(Player.GetComponent<Collider>());
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Playerという名前のタグがついたゲームオブジェクトが重なった場合
-        if(other.gameObject.tag == "Player")
+        if(other.CompareTag("Player"))
         {
+            Debug.Log("Trigger!");
             //当たり判定を表示
             judge.SetActive(true);
         }
@@ -62,8 +60,9 @@ public class LaneScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Playerという名前のタグがついたゲームオブジェクトが離れた場合
-        if(other.gameObject.tag == "Player")
+        if(other.CompareTag("Player"))
         {
+            Debug.Log("leave");
             //当たり判定を非表示
             judge.SetActive(false);
         }
