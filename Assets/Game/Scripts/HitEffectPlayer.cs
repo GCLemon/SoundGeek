@@ -3,7 +3,7 @@ using UnityEngine;
 using Effekseer;
 
 // ヒットエフェクトを設置する
-public class HitEffectPlacer : MonoBehaviour
+public class HitEffectPlayer : MonoBehaviour
 {
     // エフェクトリスト
     [SerializeField]
